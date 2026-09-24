@@ -91,9 +91,21 @@ SELECT MAX(published_year) AS newest_book_year FROM Books;
 
 -- VIEWS FOR BORROWED BOOKS 
 -- BORROWED BOOK REPORT
+CREATE VIEW Borrowed_Book_Report AS
 SELECT br.borrow_id, b.book_id, b.title, b.author, m.member_id, m.member_name, m.email, br.borrow_date, br.return_date FROM 
-Borrow_Records br JOIN Books b ON br.book_id = b.book_id JOIN Members m ON br.member_id = m.member_id; 
+Borrow_Records br
+JOIN Books b ON br.book_id = b.book_id
+JOIN Members m ON br.member_id = m.member_id;
+
+SELECT * FROM Borrowed_Book_Report;
+
 -- CURRENTLY BORROWED BOOKS
+CREATE VIEW Currently_Borrowed_Books AS
 SELECT b.title, b.author, m.member_name, br.borrow_date FROM
-Borrow_Records br JOIN Books b ON br.book_id = b.book_id JOIN Members m ON br.member_id = m.member_id WHERE br.return_date IS NULL;
+Borrow_Records br 
+JOIN Books b ON br.book_id = b.book_id
+JOIN Members m ON br.member_id = m.member_id
+WHERE br.return_date IS NULL;
+
+SELECT * FROM Currently_Borrowed_Books;
 
