@@ -3,7 +3,7 @@
 FILE_NAME = "books.txt"
 
 # Function to get non-empty input
-def get_non_empty_input(message):
+def input(message):
     while True: 
         value = input(message).strip()
         
@@ -93,7 +93,7 @@ def search_book():
 
 # Update a book 
 def update_book(): 
-  book_id = get_non_empty_input( "Enter Book ID to update: " )
+  book_id = input( "Enter Book ID to update: " )
   
   try:
         with open(FILE_NAME, "r") as file:
@@ -114,8 +114,8 @@ def update_book():
                     print("Status:", data[3])
                    
                     # Get new details
-                    new_title = get_non_empty_input( "Enter New Book Title: " )
-                    new_author = get_non_empty_input( "Enter New Author Name: " )
+                    new_title = input( "Enter New Book Title: " )
+                    new_author = input( "Enter New Author Name: " )
                     
                     # Update title and author
                     data[1] = new_title
@@ -141,7 +141,7 @@ def update_book():
 # Delete a book
 def delete_book(): 
    
-  book_id = get_non_empty_input( "Enter Book ID to delete: " )
+  book_id = input( "Enter Book ID to delete: " )
    
   try:
        with open(FILE_NAME, "r") as file:
