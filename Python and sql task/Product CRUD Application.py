@@ -1,16 +1,21 @@
 # Product CRUD Application
 
 import mysql.connector
+import os
+from dotenv import load_dotenv
+
+# Load database details from .env file
+load_dotenv()
 
 # Database Connection
 
 def connect_database():
     try:
         connection = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="Charitha@2004",
-            database="product_db"
+           host=os.getenv("DB_HOST"),
+           user=os.getenv("DB_USER"),
+           password=os.getenv("DB_PASSWORD"),
+           database=os.getenv("DB_NAME")
         )
 
         return connection
